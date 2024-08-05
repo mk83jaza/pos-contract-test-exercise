@@ -5,7 +5,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public abstract class AbstractCatalogTest {
+public abstract class CatalogContract {
 	@Test
 	void productFound() {
 		SellOneItemTest.Catalog catalog = createCatalogWith(Map.of(
@@ -14,7 +14,7 @@ public abstract class AbstractCatalogTest {
 		assertEquals(895, catalog.findPrice("12345"));
 	}
 
-	public abstract InMemoryCatalog createCatalogWith(Map<String, Integer> productMap);
+	public abstract SellOneItemTest.Catalog createCatalogWith(Map<String, Integer> productMap);
 
 	@Test
 	void productNotFound() {
@@ -24,5 +24,5 @@ public abstract class AbstractCatalogTest {
 		assertNull(catalog.findPrice("99999"));
 	}
 
-	public abstract InMemoryCatalog createCatalogWithout(Map<String, Integer> productMap);
+	public abstract SellOneItemTest.Catalog createCatalogWithout(Map<String, Integer> productMap);
 }
