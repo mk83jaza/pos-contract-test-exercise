@@ -1,14 +1,15 @@
 import java.util.Collections;
 import java.util.Map;
 
-public class InMemoryCatalogTest extends AbstractCatalogTest {
+public class InMemoryCatalogTest extends CatalogContract {
+
 	@Override
-	public InMemoryCatalog createCatalogWith(Map<String, Integer> productMap) {
+	public SellOneItemTest.Catalog createCatalogWith(Map<String, Integer> productMap) {
 		return new InMemoryCatalog(productMap);
 	}
 
 	@Override
-	public InMemoryCatalog createCatalogWithout(Map<String, Integer> productMap) {
+	public SellOneItemTest.Catalog createCatalogWithout(Map<String, Integer> productMap) {
 		return new InMemoryCatalog(Collections.emptyMap());
 	}
 }
