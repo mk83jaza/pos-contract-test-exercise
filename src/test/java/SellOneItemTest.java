@@ -19,12 +19,26 @@ public class SellOneItemTest {
 		verify(display).displayPrice(895);
 	}
 
+	@Test
+	void productNotFound() {
+		Display display = mock(Display.class);
+		Catalog catalog = mock(Catalog.class);
+		PointOfSale pos = new PointOfSale(catalog, display);
+		when(catalog.findPrice("99999")).thenReturn(null);
+
+		pos.onBarcode("99999");
+
+		verify(catalog).findPrice("99999");
+		verify(display).displayProductNotFound();
+	}
+
 	public interface Display {
 		void displayPrice(int priceInCents);
+		void displayProductNotFound();
 	}
 
 	public interface Catalog {
-		int findPrice(String barcode);
+		Integer findPrice(String barcode);
 	}
 
 }

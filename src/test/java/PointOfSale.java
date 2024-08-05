@@ -8,7 +8,11 @@ public class PointOfSale {
 	}
 
 	public void onBarcode(String barcode) {
-		int price = catalog.findPrice(barcode);
-		display.displayPrice(price);
+		Integer price = catalog.findPrice(barcode);
+		if (price == null) {
+			display.displayProductNotFound();
+		} else {
+			display.displayPrice(price);
+		}
 	}
 }
